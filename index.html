@@ -1,65 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Portfolio</title>
-  <style>
-    :root{--bg1:#0b1220;--bg2:#000}
-    html,body{height:100%}
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      background: linear-gradient(135deg,var(--bg1),var(--bg2));
-      color: #fff;
-      overflow-x:hidden;
-    }
-    header,section,footer{padding:40px 20px;text-align:center}
-    h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 8px;animation:slideDown .7s both}
-    p.hero-subtitle{color:#9ca3af;max-width:720px;margin:0 auto 8px;animation:fadeIn .9s both}
-    .buttons{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{padding:10px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer;color:#fff;transition:transform .16s, box-shadow .24s;box-shadow:0 6px 20px rgba(0,0,0,.4)}
-    .btn.github{background:linear-gradient(90deg,#2563eb,#60a5fa)}
-    .btn.linkedin{background:linear-gradient(90deg,#db2777,#f472b6)}
-    .btn.mail{background:linear-gradient(90deg,#16a34a,#34d399)}
-    .btn:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.25)}
-
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:1100px;margin:36px auto 0}
-    .card{background:#0f1724;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03);transition:transform .22s,box-shadow .22s}
-    .card:hover{transform:translateY(-8px);box-shadow:0 30px 50px rgba(2,6,23,.6)}
-    footer{color:#9ca3af;font-size:.92rem;margin-top:36px}
-
-    @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidhant Ravi - Computer Science Undergraduate | Systems, Performance & Graphics Engineering</title>
+    <meta name="description" content="Portfolio of Sidhant Ravi - Third-year CSE undergraduate passionate about systems, performance optimization, and graphics engineering.">
+    <meta name="keywords" content="Computer Science, Systems Engineering, Performance Optimization, Graphics Programming, Ray Tracing">
+    <meta name="author" content="Sidhant Ravi">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Hi, I'm <span style="color:#60a5fa">Sidhant Ravi</span></h1>
-    <p class="hero-subtitle">A passionate developer, systems enthusiast and a game dev learner.</p>
-    <div class="buttons">
-      <button class="btn github" onclick="openLink('https://github.com/sidhantravi')">GitHub</button>
-      <button class="btn linkedin" onclick="openLink('https://www.linkedin.com/in/sidhantravi')">LinkedIn</button>
-      <button class="btn mail" onclick="openLink('mailto:myemail@sidhantravi.com')">Contact</button>
-    </div>
-  </header>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">SR</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-  <section>
-    <h2 style="margin-top:0">Featured Projects</h2>
-    <div class="projects">
-      <div class="card"><h3>Project 1</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
-      <div class="card"><h3>Project 2</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
-      <div class="card"><h3>Project 3</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="code-particles" id="code-particles"></div>
+            <div class="binary-streams" id="binary-streams"></div>
+            <div class="floating-tech" id="floating-tech"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Sidhant Ravi</h1>
+                <div class="hero-subtitle">
+                    <span id="typed-text"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Third-year CSE undergraduate passionate about systems, performance optimization, 
+                    and the fine balance between software and hardware.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn--primary hero-btn">View My Work</a>
+                    <a href="#contact" class="btn btn--secondary hero-btn">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-  <footer>© <span id="year"></span> © 2025 N0T0Ri0US Built with 💻 and ☕</footer>
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="profile-container">
+                        <div class="profile-placeholder">SR</div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="about-card">
+                        <p class="about-bio">
+                            Third-year CSE undergrad passionate about systems, performance optimization, 
+                            and the fine balance between software and hardware. Exploring game development, 
+                            chip design, and research in performance engineering.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">⚡</div>
+                                <div class="highlight-text">
+                                    <h4>Systems Engineer</h4>
+                                    <p>Performance optimization & low-level programming</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">🎮</div>
+                                <div class="highlight-text">
+                                    <h4>Graphics Programmer</h4>
+                                    <p>Real-time rendering & ray tracing research</p>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">🔬</div>
+                                <div class="highlight-text">
+                                    <h4>Research Focused</h4>
+                                    <p>Hardware-software interface design</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    function openLink(url){ window.open(url, '_blank', 'noopener'); }
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category" data-category="languages">
+                    <div class="skill-header">
+                        <div class="skill-icon">💻</div>
+                        <h3>Programming Languages</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Rust</span>
+                        <span class="skill-tag">HLSL</span>
+                        <span class="skill-tag">GLSL</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-category="graphics">
+                    <div class="skill-header">
+                        <div class="skill-icon">🎨</div>
+                        <h3>Graphics & Game Dev</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Unreal Engine 5</span>
+                        <span class="skill-tag">OpenGL</span>
+                        <span class="skill-tag">Vulkan</span>
+                        <span class="skill-tag">DirectX</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-category="performance">
+                    <div class="skill-header">
+                        <div class="skill-icon">⚡</div>
+                        <h3>Performance Tools</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Perf</span>
+                        <span class="skill-tag">Valgrind</span>
+                        <span class="skill-tag">Intel VTune</span>
+                        <span class="skill-tag">RenderDoc</span>
+                        <span class="skill-tag">PIX</span>
+                        <span class="skill-tag">PresentMon</span>
+                    </div>
+                </div>
+                <div class="skill-category" data-category="systems">
+                    <div class="skill-header">
+                        <div class="skill-icon">🔧</div>
+                        <h3>Development Systems</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GDB</span>
+                        <span class="skill-tag">CMake</span>
+                        <span class="skill-tag">Neovim</span>
+                        <span class="skill-tag">VSCode</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="project-category">
+                <h3 class="category-title">Personal Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1551808525-051d2b2f9af0?w=400&h=250&fit=crop&auto=format" alt="System Performance Profiler">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">System Performance Profiler</h4>
+                            <p class="project-description">Real-time performance monitoring overlay for comprehensive system optimization and analysis</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">Linux</span>
+                                <span class="tech-tag">Performance Tools</span>
+                            </div>
+                            <div class="project-status status status--warning">In Development</div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop&auto=format" alt="Real-Time Ray Tracing">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Real-Time Ray Tracing Optimization</h4>
+                            <p class="project-description">Research into making ray tracing viable on mid-range hardware through algorithmic optimizations</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">HLSL</span>
+                                <span class="tech-tag">Graphics APIs</span>
+                            </div>
+                            <div class="project-status status status--info">Research Phase</div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe472c2b2?w=400&h=250&fit=crop&auto=format" alt="Memory Allocator">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Memory Allocator</h4>
+                            <p class="project-description">Custom high-performance memory management system with advanced allocation strategies</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Systems Programming</span>
+                            </div>
+                            <div class="project-status status status--error">Conceptual</div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1551808525-063452df8fdf?w=400&h=250&fit=crop&auto=format" alt="Graphics Pipeline Benchmarker">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Graphics Pipeline Benchmarker</h4>
+                            <p class="project-description">Performance analysis tool for rendering pipelines and graphics optimization</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">OpenGL</span>
+                                <span class="tech-tag">Performance Analysis</span>
+                            </div>
+                            <div class="project-status status status--error">Planning</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-category">
+                <h3 class="category-title">Academic Projects</h3>
+                <div class="projects-grid">
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=400&h=250&fit=crop&auto=format" alt="Multi-threaded Kernel Module">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Multi-threaded Kernel Module</h4>
+                            <p class="project-description">Advanced systems programming with concurrency and kernel-level development</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Linux Kernel</span>
+                                <span class="tech-tag">Threading</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop&auto=format" alt="Custom Memory Management">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Custom Memory Management</h4>
+                            <p class="project-description">Paging system implementation with performance optimization techniques</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C</span>
+                                <span class="tech-tag">Operating Systems</span>
+                                <span class="tech-tag">Memory Management</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop&auto=format" alt="Real-time Shader Programming">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Real-time Shader Programming</h4>
+                            <p class="project-description">Advanced lighting models and rendering techniques with performance focus</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">GLSL</span>
+                                <span class="tech-tag">OpenGL</span>
+                                <span class="tech-tag">Graphics Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card tilt-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe472c2b2?w=400&h=250&fit=crop&auto=format" alt="Software Rasterizer">
+                        </div>
+                        <div class="project-content">
+                            <h4 class="project-title">Software Rasterizer</h4>
+                            <p class="project-description">Optimized texture mapping and rasterization with performance analysis</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C++</span>
+                                <span class="tech-tag">Computer Graphics</span>
+                                <span class="tech-tag">Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="research section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Research Focus</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="research-bowling">
+                <div class="research-row research-row--top">
+                    <div class="research-item">
+                        <div class="research-icon">🔬</div>
+                        <h3>Performance Engineering and System Optimization</h3>
+                        <p>Exploring advanced techniques for system-level performance analysis and optimization strategies.</p>
+                    </div>
+                    <div class="research-item">
+                        <div class="research-icon">🎮</div>
+                        <h3>Computer Graphics and Real-time Rendering</h3>
+                        <p>Research in cutting-edge rendering techniques and real-time graphics optimization.</p>
+                    </div>
+                    <div class="research-item">
+                        <div class="research-icon">✨</div>
+                        <h3>Ray Tracing and Path Tracing Optimization</h3>
+                        <p>Making advanced ray tracing accessible on consumer hardware through algorithmic improvements.</p>
+                    </div>
+                </div>
+                <div class="research-row research-row--bottom">
+                    <div class="research-item">
+                        <div class="research-icon">🎯</div>
+                        <h3>Game Engine Architecture and Performance</h3>
+                        <p>Studying game engine design patterns and performance optimization for interactive applications.</p>
+                    </div>
+                    <div class="research-item">
+                        <div class="research-icon">⚡</div>
+                        <h3>Hardware-Software Interface Design</h3>
+                        <p>Investigating the optimal balance between hardware capabilities and software design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in discussing systems programming, performance optimization, graphics engineering, and research opportunities. Feel free to reach out!</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:myemail@protonmail.com">myemail@protonmail.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank" aria-label="GitHub">
+                        <div class="social-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank" aria-label="LinkedIn">
+                        <div class="social-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank" aria-label="Twitter">
+                        <div class="social-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </div>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank" aria-label="ORCID">
+                        <div class="social-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.525.421-.947.946-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 4.081-1.822 4.081-3.722 0-2.013-1.638-3.722-4.081-3.722h-2.297z"/>
+                            </svg>
+                        </div>
+                        <span>ORCID</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Sidhant Ravi. Built with passion for systems and performance engineering.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
 </body>
 </html>
