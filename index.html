@@ -1,55 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>My Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Montserrat',sans-serif; background:#0d0d0d; color:#fff; }
-    header { text-align:center; padding:100px 20px; background:linear-gradient(135deg,#6a11cb,#2575fc);}
-    header h1 { font-size:3em; margin:0; }
-    header p { font-size:1.2em; opacity:0.9; }
-    section { padding:60px 20px; max-width:900px; margin:auto; }
-    h2 { color:#2575fc; margin-bottom:20px; }
-    .card { background:#1a1a1a; padding:20px; margin-bottom:20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-    a { color:#2575fc; text-decoration:none; }
-    footer { text-align:center; padding:30px; font-size:0.9em; background:#111;}
+    :root{--bg1:#0b1220;--bg2:#000}
+    html,body{height:100%}
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background: linear-gradient(135deg,var(--bg1),var(--bg2));
+      color: #fff;
+      overflow-x:hidden;
+    }
+    header,section,footer{padding:40px 20px;text-align:center}
+    h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 8px;animation:slideDown .7s both}
+    p.hero-subtitle{color:#9ca3af;max-width:720px;margin:0 auto 8px;animation:fadeIn .9s both}
+    .buttons{margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:10px 18px;border-radius:10px;border:0;font-weight:700;cursor:pointer;color:#fff;transition:transform .16s, box-shadow .24s;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+    .btn.github{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+    .btn.linkedin{background:linear-gradient(90deg,#db2777,#f472b6)}
+    .btn.mail{background:linear-gradient(90deg,#16a34a,#34d399)}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.25)}
+
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;max-width:1100px;margin:36px auto 0}
+    .card{background:#0f1724;padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,.03);transition:transform .22s,box-shadow .22s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 30px 50px rgba(2,6,23,.6)}
+    footer{color:#9ca3af;font-size:.92rem;margin-top:36px}
+
+    @keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
   </style>
 </head>
 <body>
   <header>
-    <h1>Sidhant Ravi</h1>
-    <p>Systems Enthusiast | Performance Optimization | Game Dev Learner</p>
+    <h1>Hi, I'm <span style="color:#60a5fa">Sidhant Ravi</span></h1>
+    <p class="hero-subtitle">A passionate developer, systems enthusiast and a game dev learner.</p>
+    <div class="buttons">
+      <button class="btn github" onclick="openLink('https://github.com/sidhantravi')">GitHub</button>
+      <button class="btn linkedin" onclick="openLink('https://www.linkedin.com/in/sidhantravi')">LinkedIn</button>
+      <button class="btn mail" onclick="openLink('mailto:myemail@sidhantravi.com')">Contact</button>
+    </div>
   </header>
 
   <section>
-    <h2>About Me</h2>
-    <div class="card">
-      <p>I’m a CSE undergrad passionate about systems, performance engineering, and hardware-software interfacing. I love exploring game development, chip design, and optimization research.</p>
-    </div>
-
-    <h2>Projects</h2>
-    <div class="card">
-      <h3><a href="https://github.com/yourusername/yourproject">⚡ Project 1</a></h3>
-      <p>Brief description of my project (e.g. performance profiling tool, game demo, research prototype) [WIP].</p>
-    </div>
-    <div class="card">
-      <h3><a href="https://github.com/yourusername/yourproject">🎮 Project 2</a></h3>
-      <p>Another cool thing I’ve worked on. [WIP]</p>
-    </div>
-
-    <h2>Contact</h2>
-    <div class="card">
-      <p>📧 Email: myemail@protonmail.com</p>
-      <p>💼 <a href="https://www.linkedin.com/in/yourusername">LinkedIn</a></p>
-      <p>🐙 <a href="https://github.com/yourusername">GitHub</a></p>
+    <h2 style="margin-top:0">Featured Projects</h2>
+    <div class="projects">
+      <div class="card"><h3>Project 1</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
+      <div class="card"><h3>Project 2</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
+      <div class="card"><h3>Project 3</h3><p>A short description and tech used. [WIP]</p><div style="margin-top:12px"><button class="btn github" onclick="openLink('#')">View Project</button></div></div>
     </div>
   </section>
 
-  <footer>
-    © 2025 N0T0Ri0US Built with 💻 and ☕
-  </footer>
-</body>
+  <footer>© <span id="year"></span> © 2025 N0T0Ri0US Built with 💻 and ☕</footer>
 
+  <script>
+    function openLink(url){ window.open(url, '_blank', 'noopener'); }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
